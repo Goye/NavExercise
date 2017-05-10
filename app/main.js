@@ -1,13 +1,13 @@
 
-import Nav from './nav.js';
+import Nav from './js/nav.js';
+import Data from './js/data.js';
+import styles from './sass/main.scss';
 
-class Main {
-  constructor() {
-    console.log('HI');
-    console.log('HI', Nav);
+// Used an IIF to load data
+( async () => {
+    let dataNav = new Data();
+    dataNav = await dataNav.getJson('./data/nav.json');
+    console.log('JSON DATA', dataNav);
     let myNav = new Nav();
     myNav.hello();
-  }
-}
-
-let m = new Main();
+})();

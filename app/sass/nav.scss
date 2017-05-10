@@ -1,0 +1,32 @@
+// Mobile First
+.main-block {
+  background-color: $purple-color;
+   
+  .navbar-toggle-open,
+  .navbar-toggle-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    height: 72px;
+    text-indent: -9000px;
+    width: 72px;
+  }
+
+  .navbar-toggle-open {
+    background: url('/images/toggle-open.svg') no-repeat;
+  }
+  
+  .navbar-toggle-close {
+    background: url('/images/toggle-close.svg') no-repeat;
+    position: absolute;
+    right: 0;
+  }
+
+  .main-nav {
+
+    &.collapsed {
+      display: none;
+    }
+  }
+}
+

@@ -1,0 +1,98 @@
+// variables
+$purple-color: #ec008c;
+$white-color: #fff;
+
+// General Tag Classes
+body {
+  background: $white-color;
+  border: 0;
+  color: #fff;
+  font-size: 100%;
+	font: inherit;
+  margin: 0;
+  padding: 0;
+	vertical-align: baseline;
+}
+
+// Correct the inheritance and scaling of font size in all browsers.
+// Correct the odd `em` font sizing in all browsers.
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+// Prevent `sub` and `sup` elements from affecting the line height in
+// all browsers.
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font: 20vmin/1 HUGEAvantGardeBold;
+  letter-spacing: -0.06em;
+  text-align: center;
+}
+
+// General helper classes
+.hide {
+  display: none;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  transition: opacity 0.3s ease-in-out;
+  width: 100%;
+  z-index: 1;
+
+  &.show {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.base-title {
+  position: relative;
+  margin: 0;
+  letter-spacing: -0.06em;
+  color: #000;
+  font: 44px/48px 'HUGEAvantGardeBold', sans-serif;
+  text-align: left;
+  padding: 0 24px;
+  margin: 50px 0;
+  transition: transform 0.3s ease-in-out;
+
+  @media only screen and (min-width: 768px) {
+    bottom: auto;
+    color: #FFF;
+    font: 100px/1.1 'HUGEAvantGardeBold', sans-serif;
+    left: 50%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    top: 25%;
+    width: 70%;
+  }
+
+  @media only screen and (min-width: 990px) {
+    font: 120px/132px 'HUGEAvantGardeBold', sans-serif;
+  }
+}
+
