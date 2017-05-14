@@ -23,6 +23,61 @@
   }
 
   .main-nav {
+    background: #ec008c;
+
+    .main-nav-wrapper {
+      background-color: #fff;
+      color: #000;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+      
+      li {
+        position: relative;
+        
+        a {
+          display: flex;
+          flex-flow: row wrap;
+          font: 21px/48px 'HUGEAvantGardeBold', sans-serif;
+          justify-content: space-between;
+          padding: 12px 0 12px 24px;
+        }
+
+        &.has-children {
+          > a {
+            &::after {
+              align-self: center;
+              content: " ";
+              background: url('/images/arrow-down.svg') no-repeat;
+              height: 20px;
+              width: 20px;
+            }
+          }
+          
+        }
+        
+        
+      }
+
+      .submenu {
+        background-color: #fff;
+        height: 0;
+        overflow: auto;
+        
+        li {
+          a {
+            font: 14px/30px 'Galaxie', serif;
+          }
+        } 
+      }
+
+      .footer {
+        font: 12px/16px 'Helvetica', regular;
+        position: relative;
+        padding-left: 24px;
+      }
+
+    }
 
     &.collapsed {
       display: none;

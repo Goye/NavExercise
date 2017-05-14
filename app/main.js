@@ -9,5 +9,5 @@ import styles from './sass/main.scss';
     let cfg = new Config();
     dataNav = await dataNav.getJson(cfg.jsonPath);
     console.log('JSON DATA', dataNav);
-    let myNav = new Nav();
+    let myNav = new Nav(dataNav);
 })();
