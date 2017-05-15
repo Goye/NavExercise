@@ -27,7 +27,7 @@ class Nav {
         rootElement += `<li><a href=${elem.url}>${elem.label}</a></li>`;
       }
     });
-    rootElement += `<div class="footer">&copy; 2017 Huge. All Rights Reserved</div>`;
+    rootElement += `<li class="footer">&copy; 2017 Huge. All Rights Reserved</li>`;
     return rootElement;
   }
 

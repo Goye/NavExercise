@@ -1,33 +1,108 @@
 // Mobile First
 .main-block {
-  background-color: $purple-color;
-   
+  background-color: $color-magenta;
+
+  .hero-image {
+    background: url('/images/background-image.jpg') 50% 0 no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 300px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  } 
+ 
+  .main-title {
+    position: relative;
+    margin: 0;
+    letter-spacing: -0.06em;
+    color: $color-black;
+    font: 44px/48px 'HUGEAvantGardeBold', sans-serif;
+    text-align: left;
+    padding: 0 24px;
+    margin: 50px 0;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navbar-mobile {
+    background-color: $color-magenta;
+    height: 60px;
+    position: relative;
+  }
+
+  .navbar-open {
+    align-items: center;
+    display: flex;
+    height: 60px;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    right: 100%;
+    position: absolute;
+    transition: all .3s linear;
+    top: 0;
+    width: 100%;
+    
+    .nav-logo {
+      margin-left: 24px;
+    }
+  }
+
+  .navbar-closed {
+    transition: all .3s linear;
+  }
+
+  .nav-logo {
+    background: url('/images/HUGE-white.png') 0 0 no-repeat;
+    height: 20px;
+    width: 50px;
+    background-size: 50px;
+    margin: 20px 20px 20px 24px;
+    float: left;
+    display: block;
+    opacity: 1;
+    text-indent: -9999px;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+
   .navbar-toggle-open,
   .navbar-toggle-close {
     background: none;
     border: none;
     cursor: pointer;
-    height: 72px;
+    height: 60px;
+    transition: all .3s linear;
     text-indent: -9000px;
-    width: 72px;
+    width: 60px;
   }
 
   .navbar-toggle-open {
-    background: url('/images/toggle-open.svg') no-repeat;
+    background: url('/images/toggle-open.svg') no-repeat; 
+    background-position: center;
+    margin-left: 4px;
   }
   
   .navbar-toggle-close {
     background: url('/images/toggle-close.svg') no-repeat;
-    position: absolute;
-    right: 0;
+    background-position: center;
+    margin-right: 4px;
   }
 
   .main-nav {
-    background: #ec008c;
+    background: $color-white;
+    height: calc(100% - 60px);
+    position: absolute;
+    top: 60px;
+    width: calc(100% - 60px);
 
     .main-nav-wrapper {
-      background-color: #fff;
-      color: #000;
+      background-color: $color-white;
+      color: $color-black;
+      height: 100%;
       position: absolute;
       width: 100%;
       z-index: 1;
@@ -36,10 +111,12 @@
         position: relative;
         
         a {
+          color: $color-black;
           display: flex;
           flex-flow: row wrap;
           font: 21px/48px 'HUGEAvantGardeBold', sans-serif;
           justify-content: space-between;
+          text-decoration: none;
           padding: 12px 0 12px 24px;
         }
 
@@ -49,21 +126,19 @@
               align-self: center;
               content: " ";
               background: url('/images/arrow-down.svg') no-repeat;
+              margin-right: 24px;
               height: 20px;
               width: 20px;
             }
           }
-          
         }
-        
-        
       }
 
       .submenu {
-        background-color: #fff;
+        background-color: $color-white;
         height: 0;
         overflow: auto;
-        
+
         li {
           a {
             font: 14px/30px 'Galaxie', serif;
@@ -72,15 +147,30 @@
       }
 
       .footer {
+        bottom: 0;
         font: 12px/16px 'Helvetica', regular;
-        position: relative;
-        padding-left: 24px;
+        position: absolute;
+        padding: 24px 0 24px 24px;
       }
 
     }
 
-    &.collapsed {
-      display: none;
+    &.closed {
+      .main-nav-wrapper {
+        height: 0;
+      }
+    }
+
+    
+  }
+
+  &.open {
+    .navbar-open {
+      transform: translateX(100%);
+    }
+    
+    .navbar-closed {
+      transform: translateX(-100%);
     }
   }
 }

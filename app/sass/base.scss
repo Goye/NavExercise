@@ -1,12 +1,12 @@
-// variables
-$purple-color: #ec008c;
-$white-color: #fff;
-
 // General Tag Classes
+html, body {
+   height: 100%;
+}
+
 body {
-  background: $white-color;
+  background: $color-white;
   border: 0;
-  color: #fff;
+  color: $color-white;
   font-size: 100%;
 	font: inherit;
   margin: 0;
@@ -31,25 +31,13 @@ sup {
   vertical-align: baseline;
 }
 
-h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  margin: 0;
-  font: 20vmin/1 HUGEAvantGardeBold;
-  letter-spacing: -0.06em;
-  text-align: center;
-}
-
 // General helper classes
 .hide {
   display: none;
 }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: $color-trblack;
   display: none;
   height: 100%;
   position: absolute;
@@ -69,7 +57,7 @@ h1 {
   position: relative;
   margin: 0;
   letter-spacing: -0.06em;
-  color: #000;
+  color: $color-black;
   font: 44px/48px 'HUGEAvantGardeBold', sans-serif;
   text-align: left;
   padding: 0 24px;
@@ -78,7 +66,7 @@ h1 {
 
   @media only screen and (min-width: 768px) {
     bottom: auto;
-    color: #FFF;
+    color: $color-white;
     font: 100px/1.1 'HUGEAvantGardeBold', sans-serif;
     left: 50%;
     margin: 0;
