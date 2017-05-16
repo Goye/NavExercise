@@ -4,17 +4,17 @@ class Nav {
     this.root = document.querySelector('.main-nav-wrapper');
     this.closedButton = document.querySelector('.navbar-toggle-open');
     this.openedButton = document.querySelector('.navbar-toggle-close');
+    this.header = document.querySelector('header');
     this.structure = this.buildNav(data);
   }
 
-  buildNav(data, container) {
-    console.log('root', this.root);
-    
+  buildNav(data, container) {   
     this.root.innerHTML = this.htmlCode(data);
-    console.log(this.root);
-    //this.root.addEventListener();
+    this.addMenuListeners();
     this.openedButton.addEventListener('click', this.buttonListener);
+    this.openedButton.classParams = this;
     this.closedButton.addEventListener('click', this.buttonListener);
+    this.closedButton.classParams = this;
   }
 
   htmlCode(data) {
@@ -40,21 +40,29 @@ class Nav {
     return elements;
   }
 
-  buttonListener(event) {  
-    if (event.target.className.indexOf('navbar-toggle-open') != -1) {
-      this.showMobileMenu();
+  buttonListener(event) {    
+    if (event.target.className.indexOf('navbar-toggle-open') !== -1) {
+      event.target.classParams.header.classList.add('open');
     } else {
-      this.closeMobileMenu();
+      event.target.classParams.header.classList.remove('open');
     }
   }
-  
-  showMobileMenu() {
-    
+
+  addMenuListeners() {
+    let menus = document.querySelectorAll('.has-children');
+    menus.forEach(el => {
+      el.addEventListener('click', this.submenuListener);
+    });
   }
 
-  closeMobileMenu() {
-    
+  submenuListener(event) {    
+    if (this.className.indexOf('open') === -1) {
+      this.classList.add('open');
+    } else {
+      this.classList.remove('open');
+    }
   }
+
  }
 
  export default Nav;
