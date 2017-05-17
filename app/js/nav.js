@@ -5,6 +5,7 @@ class Nav {
     this.closedButton = document.querySelector('.navbar-toggle-open');
     this.openedButton = document.querySelector('.navbar-toggle-close');
     this.header = document.querySelector('header');
+    this.overlay = document.querySelector('.overlay');
     this.structure = this.buildNav(data);
   }
 
@@ -42,10 +43,39 @@ class Nav {
 
   buttonListener(event) {    
     if (event.target.className.indexOf('navbar-toggle-open') !== -1) {
-      event.target.classParams.header.classList.add('open');
+      event.target.classParams.navOpen();
+      event.target.classParams.addOutsideListener();
     } else {
-      event.target.classParams.header.classList.remove('open');
+      event.target.classParams.navClose();
     }
+  }
+
+  addOutsideListener() {
+    document.addEventListener('click', this.clickOutside); 
+  }
+
+
+  navOpen() {
+    this.header.classList.add('open');
+    this.overlay.classList.add('show');
+    
+  }
+
+  navClose() {
+    this.header.classList.remove('open');
+    this.overlay.classList.remove('show');
+  }
+
+  clickOutside(event) {
+    const inside = document.querySelector('header').contains(event.target);
+    console.log(document.querySelector('header').classList.contains('open'));
+    if ((!inside) && 
+        (document.querySelector('header').classList.contains('open'))) {
+      //event.target.classParams.navClose();
+      console.log('close', this);
+      console.log('close', event);
+    }
+    document.removeEventListener('click', this.clickOutside);
   }
 
   addMenuListeners() {
@@ -62,6 +92,9 @@ class Nav {
       this.classList.remove('open');
     }
   }
+
+  
+
 
  }
 

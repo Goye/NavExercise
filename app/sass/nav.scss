@@ -1,6 +1,7 @@
 // Mobile First
 .main-block {
   background-color: $color-magenta;
+  z-index: 1;
 
   .hero-image {
     background: url('/images/background-image.jpg') 50% 0 no-repeat;
@@ -26,6 +27,7 @@
     background-color: $color-magenta;
     height: 60px;
     position: relative;
+    z-index: 1;
   }
 
   .navbar-open {
@@ -116,6 +118,14 @@
           justify-content: space-between;
           text-decoration: none;
           padding: 0 0 0 24px;
+        }
+         
+        &:hover {
+          background-color: $color-lightGray;
+          a {
+            color: $color-magenta;
+            font-weight: bold;
+          }
         }
 
         &.has-children {
