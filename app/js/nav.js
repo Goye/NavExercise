@@ -12,10 +12,8 @@ class Nav {
   buildNav(data, container) {   
     this.root.innerHTML = this.htmlCode(data);
     this.addMenuListeners();
-    this.openedButton.addEventListener('click', this.buttonListener);
-    this.openedButton.classParams = this;
-    this.closedButton.addEventListener('click', this.buttonListener);
-    this.closedButton.classParams = this;
+    this.openedButton.addEventListener('click', () => this.buttonListener(event));
+    this.closedButton.addEventListener('click', () => this.buttonListener(event));
   }
 
   htmlCode(data) {
@@ -43,22 +41,19 @@ class Nav {
 
   buttonListener(event) {    
     if (event.target.className.indexOf('navbar-toggle-open') !== -1) {
-      event.target.classParams.navOpen();
-      event.target.classParams.addOutsideListener();
+      this.navOpen();
     } else {
       event.target.classParams.navClose();
     }
   }
 
   addOutsideListener() {
-    document.addEventListener('click', this.clickOutside); 
+    document.addEventListener('click', () => this.clickOutside(event));
   }
-
 
   navOpen() {
     this.header.classList.add('open');
-    this.overlay.classList.add('show');
-    
+    this.overlay.classList.add('show');    
   }
 
   navClose() {
@@ -66,36 +61,38 @@ class Nav {
     this.overlay.classList.remove('show');
   }
 
-  clickOutside(event) {
+  clickOutside(event) {    
     const inside = document.querySelector('header').contains(event.target);
-    console.log(document.querySelector('header').classList.contains('open'));
-    if ((!inside) && 
-        (document.querySelector('header').classList.contains('open'))) {
-      //event.target.classParams.navClose();
-      console.log('close', this);
-      console.log('close', event);
-    }
-    document.removeEventListener('click', this.clickOutside);
+     if (!inside) {     
+      this.navClose();
+      this.closeAllMenus();
+    }   
+    document.removeEventListener('click', () => this.clickOutside(event));
   }
 
   addMenuListeners() {
     let menus = document.querySelectorAll('.has-children');
     menus.forEach(el => {
-      el.addEventListener('click', this.submenuListener);
+      el.addEventListener('click', () => this.submenuListener(event));
     });
   }
 
-  submenuListener(event) {    
-    if (this.className.indexOf('open') === -1) {
-      this.classList.add('open');
+  submenuListener(event) {
+    if (!event.target.parentNode.classList.contains('open')) {
+      this.closeAllMenus();
+      event.target.parentNode.classList.add('open');
+      this.addOutsideListener();
     } else {
-      this.classList.remove('open');
+      event.target.parentNode.classList.remove('open');
     }
   }
 
-  
-
-
+  closeAllMenus() {
+    let menus = document.querySelectorAll('.has-children');
+    menus.forEach(el => {
+      el.classList.remove('open');
+    });
+  }
  }
 
  export default Nav;

@@ -28,6 +28,10 @@
     height: 60px;
     position: relative;
     z-index: 1;
+    
+    @media only screen and (min-width: 768px) {
+      height: 72px;
+    }
   }
 
   .navbar-open {
@@ -42,13 +46,18 @@
     top: 0;
     width: 100%;
     
-    .nav-logo {
-      margin-left: 24px;
+    @media only screen and (min-width: 768px) {
+      height: 72px;
+      right: 0;
     }
   }
 
   .navbar-closed {
     transition: all .2s linear;
+    
+    @media only screen and (min-width: 768px) {
+      display: none;
+    }
   }
 
   .nav-logo {
@@ -62,8 +71,15 @@
     opacity: 1;
     text-indent: -9999px;
     transition: opacity 0.5s ease-in-out;
+    
+    @media only screen and (min-width: 768px) {
+      background-size: 60px;
+      height: 24px;
+      display: block;
+      margin: 24px 0 24px 24px;
+      width: 60px;
+    }
   }
-
 
   .navbar-toggle-open,
   .navbar-toggle-close {
@@ -74,6 +90,10 @@
     transition: all .3s linear;
     text-indent: -9000px;
     width: 60px;
+    
+    @media only screen and (min-width: 768px) {
+      display: none;
+    }
   }
 
   .navbar-toggle-open {
@@ -138,6 +158,10 @@
               transition: all .2s linear;
               height: 20px;
               width: 20px;
+              
+              @media only screen and (min-width: 768px) {
+                display: none;
+              }
             }
           }
           
@@ -189,15 +213,81 @@
         margin-top: auto;
         position: relative;
         padding: 24px 0 24px 24px;
+        
+        @media only screen and (min-width: 768px) {
+          display: none;
+        }
       }
-
+      
+      @media only screen and (min-width: 768px) {
+         flex-flow: row nowrap;
+      }
     }
+    
+    @media only screen and (min-width: 768px) {
+      background-color: transparent;
+      color: $color-white;
+      height: auto;
+      left: 122px;
+      top: 0;
+      width: auto;
+      
+      .main-nav-wrapper { 
+        li {
+          a {
+            color: $color-white;
+            line-height: 72px;
+            padding: 0 24px;
+          }
 
+          &:hover {
+            a {
+              background-color: $color-white;
+              color: $color-magenta;
+            }
+          }
+          
+          &.open {
+            a {
+              background-color: $color-white;
+              color: $color-magenta;
+            }
+          }
+
+          &.has-children {
+            .submenu {
+              background-color: $color-white;
+              position: absolute;
+              width: max-content;
+
+              li {
+                a {
+                  line-height: 48px;
+                  padding: 0 24px;
+                  width: auto;
+                }
+
+                &:hover {
+                  a {
+                    background-color: $color-lightGray;
+                    color: $color-magenta;
+                    font-weight: bold;
+                  }
+                }
+              } 
+            }
+          }          
+        }
+      }
+    }
   }
 
   &.open {
     .navbar-open {
       transform: translateX(100%);
+      @media only screen and (min-width: 768px) {
+        transform: none;
+      }
     }
     
     .navbar-closed {
@@ -206,6 +296,10 @@
     
     .main-nav {
       transform: translateX(calc(100% + 60px));
+      
+      @media only screen and (min-width: 768px) {
+        transform: none;
+      }
     }
   }
 }
