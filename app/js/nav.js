@@ -43,7 +43,7 @@ class Nav {
     if (event.target.className.indexOf('navbar-toggle-open') !== -1) {
       this.navOpen();
     } else {
-      event.target.classParams.navClose();
+      this.navClose();
     }
   }
 

@@ -9,7 +9,13 @@
     position: relative;
     height: 300px;
     transition: all 0.3s ease-in-out;
+
+    @media only screen and (min-width: 768px) {
+      height: 712px;
+      margin-bottom: 0;
+    }
   } 
+    
  
   .main-title {
     position: relative;
@@ -106,10 +112,16 @@
     background: url('/images/toggle-close.svg') no-repeat;
     background-position: center;
     margin-right: 4px;
+    opacity: 0;
+    
+    @media only screen and (min-width: 768px) {
+      display: none;
+    }
   }
 
   .main-nav {
     background: $color-white;
+    display: none;
     height: calc(100% - 60px);
     position: absolute;
     left: -100%;
@@ -191,6 +203,7 @@
           }
           
           &.open {
+            display: block;    
              > a {
               &::after {
                 transform: rotate(180deg);
@@ -227,6 +240,7 @@
     @media only screen and (min-width: 768px) {
       background-color: transparent;
       color: $color-white;
+      display: block;
       height: auto;
       left: 122px;
       top: 0;
@@ -267,6 +281,14 @@
                   width: auto;
                 }
 
+                &:first-child {
+                  margin-top: 12px;
+                }
+                
+                &:last-child {
+                  margin-bottom: 12px;
+                }
+
                 &:hover {
                   a {
                     background-color: $color-lightGray;
@@ -293,9 +315,14 @@
     .navbar-closed {
       transform: translateX(-100%);
     }
+
+    .navbar-toggle-close { 
+      opacity: 1;
+    }
     
     .main-nav {
       transform: translateX(calc(100% + 60px));
+      display: block;
       
       @media only screen and (min-width: 768px) {
         transform: none;

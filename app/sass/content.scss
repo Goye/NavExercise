@@ -1,6 +1,15 @@
 .content {
   color: $color-black;
-  max-width: 968px;
+  margin-top: 50px;
   padding: 0 24px;
   transition: transform 0.3s ease-in-out;
+  
+  @media only screen and (min-width: 768px) {
+    margin: 60px auto 0 auto;
+    max-width: 968px;
+  }
+  
+  @media only screen and (min-width: 990px) {
+    padding: 0; 
+  }
 }
