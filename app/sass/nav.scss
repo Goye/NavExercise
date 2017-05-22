@@ -93,9 +93,16 @@
     border: none;
     cursor: pointer;
     height: 60px;
+    position: relative;
     transition: all .3s linear;
-    text-indent: -9000px;
     width: 60px;
+    
+    svg {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
     
     @media only screen and (min-width: 768px) {
       display: none;
@@ -103,15 +110,16 @@
   }
 
   .navbar-toggle-open {
-    background: url('/images/toggle-open.svg') no-repeat; 
-    background-position: center;
-    margin-left: 4px;
+    svg {
+      left: 0;
+    }
   }
   
   .navbar-toggle-close {
-    background: url('/images/toggle-close.svg') no-repeat;
-    background-position: center;
-    margin-right: 4px;
+    svg {
+      right: 0;
+    }
+    
     opacity: 0;
     
     @media only screen and (min-width: 768px) {

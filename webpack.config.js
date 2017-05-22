@@ -3,6 +3,13 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+/**
+ * Using 3 plugins, ExtractTextPlugin, HtmlWebpackPlugin and
+ * Webpack to generate a build folder copying HTML File too
+ * Included SCSS Compiler, and JSON FIle loader (not used, replaced by Async load)
+ * Babel included to implement ES6 Class and Imports
+ * Web server with Hot Reload Includedweb
+ */ 
 const config = {
   context: path.resolve(__dirname, './app'),
   entry: {
@@ -10,7 +17,6 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, './public'),
-    publicPath: '/public',
     filename: 'bundle.js'
   },
   devServer: {
@@ -23,7 +29,12 @@ const config = {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader'],
+          use: [{
+                loader: "css-loader",
+                options: {
+                    minimize: true
+                }
+            }, 'sass-loader'],
           publicPath:'/public'
         })
       },
@@ -47,8 +58,8 @@ const config = {
    plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Challenges',
-      hash: true,
+      title: 'Huge Nav Exercise',
+      hash: false,
       template: './index.html'
     }),
     new ExtractTextPlugin({
