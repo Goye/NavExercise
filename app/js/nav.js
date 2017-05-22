@@ -7,7 +7,8 @@ class Nav {
  */
   constructor(data) {
     this.root = document.querySelector('.main-nav-wrapper');
-    this.toggleButton = document.querySelector('.navbar-toggle');
+    this.toggleButtonOpen = document.querySelector('.navbar-toggle-open');
+    this.toggleButtonClose = document.querySelector('.navbar-toggle-close');
     this.header = document.querySelector('header');
     this.overlay = document.querySelector('.overlay');
     this.data = data;
@@ -21,7 +22,8 @@ class Nav {
   buildNav() {   
     this.root.innerHTML = this.htmlCode();
     this.addMenuListeners();
-    this.toggleButton.addEventListener('click', () => this.buttonListener(event));
+    this.toggleButtonOpen.addEventListener('click', () => this.buttonListener(event));
+    this.toggleButtonClose.addEventListener('click', () => this.buttonListener(event));
   }
   
   /**
@@ -34,7 +36,8 @@ class Nav {
     this.data.items.map((elem, index) => {
       if (elem.items.length > 0) {
         let children = this.htmlChildren(elem.items);
-        rootElement += `<li class="has-children"><a href=${elem.url}>${elem.label}</a>${children}</li>`;
+        rootElement += `<li class="has-children">
+        <a href=${elem.url}>${elem.label}</a>${children}</li>`;
       } else {
         rootElement += `<li><a href=${elem.url}>${elem.label}</a></li>`;
       }
@@ -64,10 +67,8 @@ class Nav {
   * @param  {Object} event - Captured event
   */
   buttonListener(event) {
-    console.log(event);
     const closestButton = event.target.closest('button');
-    console.log(closestButton);
-    if (closestButton) {
+    if (closestButton.classList.contains('navbar-toggle-open')) {
       this.navOpen();
     } else  {
       this.navClose();
@@ -80,8 +81,9 @@ class Nav {
   * @param  {Object} event - Captured event
   */
   clickOutside(event) {    
-    const inside = document.querySelector('header').contains(event.target);
-     if (!inside) {     
+    const inside = document.querySelector('.main-nav').contains(event.target);
+    const openButton = this.toggleButtonOpen.contains(event.target);
+     if ((!inside) && (!openButton)) {
       this.navClose();
       this.closeAllMenus();
     }   
@@ -104,7 +106,6 @@ class Nav {
   navOpen() {
     this.header.classList.add('open');
     this.overlay.classList.add('show'); 
-    this.toggleButton.classList.add('open');
   }
   
   /**
@@ -114,7 +115,7 @@ class Nav {
   navClose() {
     this.header.classList.remove('open');
     this.overlay.classList.remove('show');
-    this.toggleButton.classList.remove('open');
+    this.closeAllMenus();
   }
 
   /**
@@ -126,6 +127,9 @@ class Nav {
     menus.forEach(el => {
       el.addEventListener('click', () => this.submenuListener(event));
     });
+    window.addEventListener('resize', () => this.checkScreenSize(event));
+    this.addOutsideListener();
+    
   }
   
   /**
@@ -136,7 +140,6 @@ class Nav {
     if (!event.target.parentNode.classList.contains('open')) {
       this.closeAllMenus();
       event.target.parentNode.classList.add('open');
-      this.addOutsideListener();
     } else {
       event.target.parentNode.classList.remove('open');
     }
@@ -151,6 +154,16 @@ class Nav {
     menus.forEach(el => {
       el.classList.remove('open');
     });
+  }
+   
+   /**
+  * checkScreenSize
+  * Verify if screen is > 768 and close the menus
+  */
+  checkScreenSize() {
+   if (window.innerWidth > 768) {
+     this.navClose();
+   }
   }
  }
 

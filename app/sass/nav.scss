@@ -1,6 +1,6 @@
-// Nav Element  - Mobile First
+// Mobile First
 .main-block {
-  background-color: transparent;
+  background-color: $color-magenta;
   z-index: 1;
 
   .hero-image {
@@ -29,7 +29,7 @@
     transition: transform 0.3s ease-in-out;
   }
 
-  .navbar-container {
+  .navbar-mobile {
     background-color: $color-magenta;
     height: 60px;
     position: relative;
@@ -40,14 +40,14 @@
     }
   }
 
-  .navbar-wrapper {
+  .navbar-open {
     align-items: center;
-    display: block;
+    display: flex;
     height: 60px;
     flex-flow: row wrap;
     justify-content: space-between;
-    //right: 100%;
-    position: relative;
+    right: 100%;
+    position: absolute;
     transition: all .2s linear;
     top: 0;
     width: 100%;
@@ -74,7 +74,6 @@
     margin: 20px 20px 20px 24px;
     float: left;
     display: block;
-    transform: translateX(-200%);
     opacity: 1;
     text-indent: -9999px;
     transition: opacity 0.5s ease-in-out;
@@ -88,46 +87,41 @@
     }
   }
 
-  .navbar-toggle {
+  .navbar-toggle-open,
+  .navbar-toggle-close {
     background: none;
     border: none;
     cursor: pointer;
     height: 60px;
-    left: 0;
-    position: absolute;
+    position: relative;
     transition: all .3s linear;
     width: 60px;
     
     svg {
       height: 100%;
-      left: 0;
       position: absolute;
       top: 0;
-      width: 60px;
-    }
-
-    .btn-open {
-      display: block;
-    }
-
-    .btn-close {
-      display: block;
-    }
-
-    &.open {
-      
-      .btn-close {
-        display: block;
-        transform: translateX(200%);
-      }
-      
-      .btn-open {
-        display: none;
-      }
+      width: 100%;
     }
     
-    
+    @media only screen and (min-width: 768px) {
+      display: none;
+    }
+  }
 
+  .navbar-toggle-open {
+    svg {
+      left: 0;
+    }
+  }
+  
+  .navbar-toggle-close {
+    svg {
+      right: 0;
+    }
+    
+    opacity: 0;
+    
     @media only screen and (min-width: 768px) {
       display: none;
     }
@@ -320,7 +314,7 @@
 
   &.open {
     .navbar-open {
-      //transform: translateX(100%);
+      transform: translateX(100%);
       @media only screen and (min-width: 768px) {
         transform: none;
       }
