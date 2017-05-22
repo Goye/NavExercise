@@ -3,21 +3,31 @@
 <head>
   <title>HUGE NavExercise</title>
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="/public/main.css">
-  <link rel="shortcut icon" href="/public/images/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
   <!--[if lt IE 9]>
     <script src="dist/html5shiv.js"></script>
   <![endif]-->
 </head>
 <body>
+  <!-- Header Block -->
   <header class="main-block">
-    <div class="navbar-mobile">
-      <div class="navbar-closed">
-        <button class="navbar-toggle-open"></button>
-      </div>
-      <div class="navbar-open">
+    <div class="navbar-container">
+      <div class="navbar-wrapper">
         <a class="nav-logo" href="/">HUGE</a>
-        <button class="navbar-toggle-close"></button>
+        <button class="navbar-toggle toggle-open">
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            width="72px" height="72px" fill="#ec008c" viewBox="0 0 72 72" enable-background="new 0 0 72 72" xml:space="preserve" class="btn-open" >
+          <g><rect x="24" y="26" fill="#fff" width="24" height="4"/><rect x="24" y="34" fill="#fff" width="24" height="4"/><rect x="24" y="42" 
+          fill="#fff" width="24" height="4"/></g>
+          </svg>
+        </button>
+        <button class="navbar-toggle toggle-close">
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            width="72px" height="72px" viewBox="0 0 72 72" enable-background="new 0 0 72 72" xml:space="preserve" class="btn-close">
+          <polygon fill="#fff" points="38.854,35.977 45.9,28.929 43.071,26.1 35.975,33.196 28.758,26.227 25.979,29.104 33.146,36.025 
+            26.101,43.07 28.93,45.899 36.024,38.805 43.243,45.775 46.021,42.898 "/>
+          </svg>
+        </button>
       </div>
     </div>
     <div class="hero-image"></div>
@@ -25,14 +35,18 @@
       <ul class="main-nav-wrapper"></ul>
     </nav>
   </header>
+  <!-- End Header Block -->
+  <!-- Overlay Block -->
   <div class="overlay"></div>
+  <!-- End overlay Block -->
   <h1 class="base-title">Get paid for giving a shit.</h1>
+  <!-- Content Block -->
   <main class="content">
     <section>
       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </section>
   </main>
-  <script type="text/javascript" src="/public/bundle.js"></script>
+  <!-- End content Block -->
 </body>
 </html>

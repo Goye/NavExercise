@@ -13,7 +13,9 @@
   },
   "private": true,
   "scripts": {
+    "babi": "./node_modules/.bin/babili public -d public",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp clean && webpack && npm run babi && gulp assets",
     "start": "node ./bin/www",
     "dev": "webpack-dev-server --hot --inline --port 3000 --content-base ./public",
     "t": "webpack-dev-server "
@@ -33,6 +35,8 @@
     "webpack-dev-server": "^2.4.5"
   },
   "devDependencies": {
-    "babili": "0.0.12"
+    "babili": "0.0.12",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2"
   }
 }
