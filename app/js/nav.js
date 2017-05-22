@@ -1,5 +1,6 @@
+"use strict";
 /** Class representing a Nav */
-class Nav { 
+class Nav {
  /**
  * Represents a Nav
  * @constructor
@@ -19,16 +20,16 @@ class Nav {
   * BuildNav Function
   * Build the nav structure and assign listeners
   */
-  buildNav() {   
+  buildNav() {
     this.root.innerHTML = this.htmlCode();
     this.addMenuListeners();
     this.toggleButtonOpen.addEventListener('click', () => this.buttonListener(event));
     this.toggleButtonClose.addEventListener('click', () => this.buttonListener(event));
   }
-  
+
   /**
   * HtmlCode
-  * Create parents Html template elements and assign classes 
+  * Create parents Html template elements and assign classes
   * @return {Object} Html element with the nav
   */
   htmlCode() {
@@ -45,10 +46,10 @@ class Nav {
     rootElement += `<li class="footer">&copy; 2017 Huge. All Rights Reserved</li>`;
     return rootElement;
   }
- 
+
   /**
   * HtmlChildren
-  * Create submenu 
+  * Create submenu
   * @param  {Object} nodes - Json Object with Submenu data
   * @return {Object} Html element with submenu
   */
@@ -60,7 +61,7 @@ class Nav {
     elements += '</ul>';
     return elements;
   }
-  
+
   /**
   * buttonListener
   * Assign listeners to menu buttons, open and close nav
@@ -80,16 +81,16 @@ class Nav {
   * Detect click outside menu and closes the nav
   * @param  {Object} event - Captured event
   */
-  clickOutside(event) {    
+  clickOutside(event) {
     const inside = document.querySelector('.main-nav').contains(event.target);
     const openButton = this.toggleButtonOpen.contains(event.target);
      if ((!inside) && (!openButton)) {
       this.navClose();
       this.closeAllMenus();
-    }   
+    }
     document.removeEventListener('click', () => this.clickOutside(event));
   }
-  
+
   /**
   * addOutsideListener
   * Assign event listener to click and call the function
@@ -98,16 +99,16 @@ class Nav {
   addOutsideListener() {
     document.addEventListener('click', () => this.clickOutside(event));
   }
- 
+
   /**
   * navOpen
   * Open nav menu
   */
   navOpen() {
     this.header.classList.add('open');
-    this.overlay.classList.add('show'); 
+    this.overlay.classList.add('show');
   }
-  
+
   /**
   * navOpen
   * Close nav menu
@@ -129,12 +130,12 @@ class Nav {
     });
     window.addEventListener('resize', () => this.checkScreenSize(event));
     this.addOutsideListener();
-    
+
   }
-  
+
   /**
   * submenuListener
-  * Callback to open and close the submenu 
+  * Callback to open and close the submenu
   */
   submenuListener(event) {
     if (!event.target.parentNode.classList.contains('open')) {
@@ -144,7 +145,7 @@ class Nav {
       event.target.parentNode.classList.remove('open');
     }
   }
-  
+
   /**
   * closeAllMenus
   * Close all menus open
@@ -155,7 +156,7 @@ class Nav {
       el.classList.remove('open');
     });
   }
-   
+
    /**
   * checkScreenSize
   * Verify if screen is > 768 and close the menus
