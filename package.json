@@ -14,7 +14,7 @@
   "private": true,
   "scripts": {
     "babi": "./node_modules/.bin/babili public -d public",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-register --require babel-polyfill --recursive app/test/ ",
     "build": "gulp clean && webpack && npm run babi && gulp assets",
     "start": "node ./bin/www",
     "dev": "webpack-dev-server --hot --inline --port 3000 --content-base ./public",
@@ -35,8 +35,15 @@
     "webpack-dev-server": "^2.4.5"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.23.0",
+    "babel-register": "^6.24.1",
     "babili": "0.0.12",
+    "chai": "^3.5.0",
+    "extract-text-webpack-plugin": "^2.1.0",
     "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2"
+    "gulp-clean": "^0.3.2",
+    "html-webpack-plugin": "^2.28.0",
+    "mocha": "^3.4.1",
+    "node-sass": "^4.5.3"
   }
 }
