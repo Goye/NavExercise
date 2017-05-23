@@ -40,7 +40,7 @@ class Nav {
         rootElement += `<li class="has-children">
         <a href=${elem.url}>${elem.label}</a>${children}</li>`;
       } else {
-        rootElement += `<li><a href=${elem.url}>${elem.label}</a></li>`;
+        rootElement += `<li><a href=${elem.url} target="_blank">${elem.label}</a></li>`;
       }
     });
     rootElement += `<li class="footer">&copy; 2017 Huge. All Rights Reserved</li>`;
@@ -56,7 +56,7 @@ class Nav {
   htmlChildren(nodes) {
     let elements = '<ul class="submenu">';
    nodes.map((elem, index) => {
-      elements += `<li><a href=${elem.url}>${elem.label}</a></li>`;
+      elements += `<li><a href=${elem.url} target="_blank">${elem.label}</a></li>`;
     });
     elements += '</ul>';
     return elements;
@@ -140,9 +140,11 @@ class Nav {
   submenuListener(event) {
     if (!event.target.parentNode.classList.contains('open')) {
       this.closeAllMenus();
+      event.target.setAttribute('aria-current', 'page');
       event.target.parentNode.classList.add('open');
     } else {
       event.target.parentNode.classList.remove('open');
+      event.target.removeAttribute('aria-current', 'page');
     }
   }
 
@@ -152,9 +154,14 @@ class Nav {
   */
   closeAllMenus() {
     let menus = document.querySelectorAll('.has-children');
+    let ariaLinks = document.querySelectorAll('a');
     menus.forEach(el => {
-      el.classList.remove('open');
+      el.classList.remove('open');    
     });
+    ariaLinks.forEach(el => {
+      el.removeAttribute('aria-current');
+    });
+    
   }
 
    /**
