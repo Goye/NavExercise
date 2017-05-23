@@ -5,7 +5,7 @@ class Data {
   * @constructor
   */
   constructor() {}
-  
+
   /**
   * GetJson
   * Loads the file data asynchronously 

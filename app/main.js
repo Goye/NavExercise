@@ -9,5 +9,5 @@ import styles from './sass/main.scss';
  * Load data and build the Nav with the data loaded 
  */
 
-let huge = new Huge();
+const huge = new Huge();
 huge.init();

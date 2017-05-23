@@ -5,7 +5,7 @@ class Config {
   * @constructor
   */
   constructor() {
-    this.jsonPath = './data/nav.json';
+    this.jsonPath = "./data/nav.json";
   }
 }
 
