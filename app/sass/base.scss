@@ -2,7 +2,7 @@
  * @fileOverview Project styles
  *
  * @version 1.0
- * @author Andres Ramirez 
+ * @author Andres Ramirez
  */
 /**================================================
  * 1. Base Styles
@@ -86,7 +86,7 @@ sup {
     transform: translate(-50%, -100%);
     transition: all 0.3s ease-in-out;
     text-align: center;
-    top: 50%;
+    top: 45%;
     width: 70%;
   }
 
@@ -94,4 +94,3 @@ sup {
     font: $headline-desktop;
   }
 }
-
