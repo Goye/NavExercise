@@ -160,9 +160,11 @@ class Nav {
     if (!event.target.parentNode.classList.contains("open")) {
       this.closeAllMenus();
       event.target.setAttribute("aria-current", "page");
+      event.target.parentNode.setAttribute("aria-expanded", "true");
       event.target.parentNode.classList.add("open");
     } else {
       event.target.parentNode.classList.remove("open");
+      event.target.parentNode.removeAttribute("aria-expanded");
       event.target.removeAttribute("aria-current", "page");
     }
   }
@@ -174,6 +176,7 @@ class Nav {
   closeAllMenus() {
     this.htmlData.menuParents.forEach(el => {
       el.classList.remove("open");
+      el.removeAttribute("aria-expanded");
     });
 
     this.htmlData.allLinks.forEach(el => {
