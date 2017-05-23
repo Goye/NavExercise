@@ -1,11 +1,22 @@
-// Content block element
+/**
+ * @fileOverview Project styles
+ *
+ * @version 1.0
+ * @author Andres Ramirez 
+ */
+/**================================================
+ * 1. Content Block
+ * Content Div Styles
+ */
 .content {
   color: $color-black;
+  font: 14px/24px 'Galaxie', serif;
   margin-top: 50px;
   padding: 0 24px;
   transition: transform 0.3s ease-in-out;
   
   @media only screen and (min-width: 768px) {
+    font: 24px/36px 'Galaxie', serif;
     margin: 60px auto 0 auto;
     max-width: 968px;
   }

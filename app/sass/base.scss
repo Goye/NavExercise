@@ -1,4 +1,14 @@
-// General Tag Classes
+/**
+ * @fileOverview Project styles
+ *
+ * @version 1.0
+ * @author Andres Ramirez 
+ */
+/**================================================
+ * 1. Base Styles
+ * 2. Helpers
+ */
+
 html, body {
    height: 100%;
 }
@@ -31,7 +41,9 @@ sup {
   vertical-align: baseline;
 }
 
-// General helper classes
+/**================================================
+ * 2. Helpers
+ */
 .hide {
   display: none;
 }
@@ -57,16 +69,16 @@ sup {
   margin: 0;
   letter-spacing: -0.06em;
   color: $color-black;
-  font: 44px/48px 'HUGEAvantGardeBold', sans-serif;
+  font: $headline-mobile;
   text-align: left;
   padding: 0 24px;
   margin: 50px 0;
   transition: transform 0.3s ease-in-out;
 
-  @media only screen and (min-width: 768px) {
+  @media #{$desktop} {
     bottom: auto;
     color: $color-white;
-    font: 100px/1.1 'HUGEAvantGardeBold', sans-serif;
+    font: $headline-tablet;
     left: 50%;
     margin: 0;
     padding: 0;
@@ -78,8 +90,8 @@ sup {
     width: 70%;
   }
 
-  @media only screen and (min-width: 990px) {
-    font: 120px/132px 'HUGEAvantGardeBold', sans-serif;
+   @media #{$lg-desktop} {
+    font: $headline-desktop;
   }
 }
 

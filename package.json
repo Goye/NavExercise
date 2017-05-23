@@ -14,11 +14,20 @@
   "private": true,
   "scripts": {
     "babi": "./node_modules/.bin/babili public -d public",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ava",
     "build": "gulp clean && webpack && npm run babi && gulp assets",
-    "start": "node ./bin/www",
-    "dev": "webpack-dev-server --hot --inline --port 3000 --content-base ./public",
-    "t": "webpack-dev-server "
+    "oldstart": "node ./bin/www",
+    "start": "webpack-dev-server --hot --inline --port 3000 "
+  },
+  "ava": {
+    "files": [
+      "app/test/**/*.js"
+    ],
+    "require": [
+      "babel-register",
+       "./app/test/helpers/setup-browser-env.js"
+    ],
+    "babel": "inherit"
   },
   "dependencies": {
     "babel-core": "^6.24.1",
@@ -35,8 +44,13 @@
     "webpack-dev-server": "^2.4.5"
   },
   "devDependencies": {
+    "ava": "^0.19.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-register": "^6.24.1",
     "babili": "0.0.12",
+    "browser-env": "^2.0.31",
     "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2"
+    "gulp-clean": "^0.3.2",
+    "transform-runtime": "0.0.0"
   }
 }

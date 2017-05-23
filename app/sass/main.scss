@@ -1,4 +1,13 @@
-// Imports for all the scss blocks
+/**
+ * @fileOverview Project styles
+ *
+ * @version 1.0
+ * @author Andres Ramirez 
+ */
+/**================================================
+ * 1. Includes
+ * All the blocks are managed like components or helpers
+ */
 @import "/reset.scss";
 @import "/variables.scss";
 @import "/base.scss";
