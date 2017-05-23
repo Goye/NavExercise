@@ -14,7 +14,11 @@ class Data {
   */
   async getJson(path) {
     const response = await fetch(path);
-    return await response.json();
+    const body = await response.json();
+    if (response.status !== 200) {
+      throw Error(body.message);
+    }
+    return body;
   }
 }
 
